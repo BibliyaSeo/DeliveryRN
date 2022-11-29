@@ -20,7 +20,17 @@ export const basketSlice = createSlice({
       state.items = [...state.items, action.payload];
     },
     removeFromBasket: (state, action) => {
-      state.items = [];
+      const index = state.items.findIndex(
+        (item: any) => item.id === action.payload.id,
+      );
+      let newBasket = [...state.items];
+
+      if (index >= 0) {
+        newBasket.splice(0, 1);
+      } else {
+        console.warn(`장바구니에 존재하지 않습니다!`);
+      }
+      state.items = newBasket;
     },
   },
 });
@@ -28,5 +38,8 @@ export const basketSlice = createSlice({
 export const {addToBasket, removeFromBasket} = basketSlice.actions;
 
 export const selectBasketItems = (state: RootState) => state.basket.items;
+
+export const selectBasketItemsWithId = (state: any, id: string) =>
+  state.basket.items.filter((item: any) => item.id === id);
 
 export default basketSlice.reducer;
