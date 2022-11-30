@@ -1,5 +1,4 @@
 import {createSlice} from '@reduxjs/toolkit';
-import type {PayloadAction} from '@reduxjs/toolkit';
 import type {RootState} from '../store';
 
 // Define a type for the slice state
@@ -26,7 +25,7 @@ export const basketSlice = createSlice({
       let newBasket = [...state.items];
 
       if (index >= 0) {
-        newBasket.splice(0, 1);
+        newBasket.splice(index, 1);
       } else {
         console.warn(`장바구니에 존재하지 않습니다!`);
       }
