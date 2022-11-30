@@ -95,6 +95,13 @@ export default function BasketScreen() {
             <Text>총액</Text>
             <Text className="font-extrabold">{basketTotal + 3000}원</Text>
           </View>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('PreparingOrder')}
+            className="rounded-lg bg-[#00CCBB] p-4">
+            <Text className="text-center text-white text-lg font-bold">
+              주문하기
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
